@@ -1,24 +1,22 @@
-import logo from './logo.svg';
-import './App.css';
+import React,{useState} from "react";
+import { getMonth } from "./util";
+import Month from './Month/Month'
+import CalenderHeader from './CalenderHeader/CalenderHeader'
+import Sidebar from "./Sidebar/Sidebar";
+
 
 function App() {
+  const [currentMonth, setCurrentMonth] = useState(getMonth())
+
+  console.table(getMonth())
   return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
-    </div>
+      <div className="flex flex-col">
+        <CalenderHeader/>
+        <div>
+          <Sidebar/>
+          <Month month ={currentMonth}/>
+        </div>
+      </div>
   );
 }
 
