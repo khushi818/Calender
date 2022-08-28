@@ -6,7 +6,7 @@ const Month = ({month}) => (
         {month.map((row, i) =>(
             <div key = {i} className = "grid grid-cols-7">
                 {row.map((day,idx) =>(
-                    <Day day={ day.format('ddd') } daydate = {day.format('DD')} key = {idx} rowIdx = {i} />
+                    <Day day={day} daydate = {day.format('DD')} key = {idx} rowIdx = {i} />
                 ))}
             </div>
         ))}
