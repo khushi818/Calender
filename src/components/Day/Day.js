@@ -2,7 +2,11 @@ import React, { useContext } from 'react'
 import GlobalContext from '../../context/GlobalContext'
 import dayjs from 'dayjs'
 const Day = ({day,daydate,rowIdx}) => {
-   const {monthIndex, setMonthIndex} = useContext(GlobalContext) 
+   const {
+    monthIndex, setMonthIndex,
+    daySelected,setDaySelected,
+    showEventModel,setShowEventModel
+  } = useContext(GlobalContext) 
     const getCurrentDayClass = () =>{
              
         console.log(dayjs().date())// gives current date
@@ -11,14 +15,18 @@ const Day = ({day,daydate,rowIdx}) => {
     }
     
   return (
-    <div className = "border-spacing-2 border-[1px] border-indigo-500 p-10">
+    <div className = "border-spacing-2 border-[1px] border-indigo-500 p-10 cursor-pointer"   
+    onClick={() =>{
+          setDaySelected(day) 
+          setShowEventModel(true)
+        }}>
        <header className='flex flex-col items-center'>
-        {rowIdx === 0 && (<p className="text-sm mt-1">{day.format('ddd')}</p>) }
+        {rowIdx === 0 && (<p className="text-sm mt-1">{day.format('ddd').toUpperCase()}</p>) }
         <p className= {`text-sm p-1 my-1 text-center ${getCurrentDayClass()}`}>
             {daydate}
         </p>
-        
         </header> 
+        
     </div>
   )
 }
