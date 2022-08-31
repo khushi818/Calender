@@ -1,16 +1,26 @@
-import React, { useContext } from 'react'
+import React, { useContext, useEffect, useState } from 'react'
 import GlobalContext from '../../context/GlobalContext'
 import dayjs from 'dayjs'
 const Day = ({day,daydate,rowIdx}) => {
    const {
     monthIndex, setMonthIndex,
     daySelected,setDaySelected,
-    showEventModel,setShowEventModel
+    showEventModel,setShowEventModel,
+    SavedEvents,setSelectedEvents,
   } = useContext(GlobalContext) 
+
+    const [dayEvents,setDayEvents] =  useState([])
+
+    useEffect(() =>{
+       const events = SavedEvents.filter(evt => dayjs(evt.day).format('DD-MM-YY'))
+       console.log("here")
+       setDayEvents(events)
+    },[SavedEvents,day])
+    
     const getCurrentDayClass = () =>{
              
-        console.log(dayjs().date())// gives current date
-        console.log(daydate)
+        // console.log(dayjs().date())// gives current date
+        // console.log(daydate)
         return (day.format('DD-MM-YY') === dayjs().format('DD-MM-YY'))  ? 'bg-blue-600 text-white rounded-full w-7':''
     }
     
@@ -25,8 +35,17 @@ const Day = ({day,daydate,rowIdx}) => {
         <p className= {`text-sm p-1 my-1 text-center ${getCurrentDayClass()}`}>
             {daydate}
         </p>
+         {dayEvents.map((evt,idx) =>(
+            (dayjs(evt.day).format('DD-MM-YY') === day.format('DD-MM-YY')) &&
+          (<div key={idx} onClick= {()=>{setSelectedEvents(evt)}}
+          className = {` text-sm text-white rounded px-4 py-1 `} style = {{background : `${evt.label}`}}>
+             {evt.title}
+          </div> 
+          )))}
         </header> 
-        
+          
+       
+                
     </div>
   )
 }

@@ -1,7 +1,6 @@
 import React, { useState,useEffect, useReducer } from 'react'
 import GlobalContext from './GlobalContext'
 import dayjs from 'dayjs'
-import { parse } from 'postcss'
 
 function SavedEventsReducer(state,{type,payload}) {
   switch(type){
@@ -21,18 +20,28 @@ function initEvents(){
     const parsedEvents = storageEvents ? JSON.parse(storageEvents):[]
     return parsedEvents;
 }
+
 const ContextWrapper = (props) =>{
      const [monthIndex,setMonthIndex] = useState(dayjs().month())
      const [smallCalender,setSmallCalender] = useState(null)
      const [daySelected,setDaySelected] = useState(null)
      const [showEventModel,setShowEventModel] = useState(false)
+     const [selectedEvents ,setSelectedEvents] = useState(null)
+     const [labels,setLabel] = useState([])
      const [SavedEvents,dispatchCalEvents] = useReducer(
         SavedEventsReducer,
         [],
         initEvents)
 
+
      useEffect(() =>{
-        localStorage.setItem("saveEvents",JSON.stringify(SavedEvents))
+        localStorage.setItem("savedEvents",JSON.stringify(SavedEvents))
+     },[SavedEvents])
+
+     useEffect(() =>{
+          setLabel(
+            [...new Set(SavedEvents.map(evt => evt.label))]
+          ) 
      },[SavedEvents])
 
      useEffect(()=>{
@@ -41,6 +50,8 @@ const ContextWrapper = (props) =>{
             setMonthIndex(smallCalender);
            }
      },[smallCalender])
+
+
      return(
         <GlobalContext.Provider value = 
         {{
@@ -48,7 +59,9 @@ const ContextWrapper = (props) =>{
             smallCalender,setSmallCalender,
             daySelected,setDaySelected,
             showEventModel,setShowEventModel,
-            dispatchCalEvents
+            dispatchCalEvents,SavedEvents,
+            selectedEvents,setSelectedEvents,
+            labels,setLabel
         }}>
             {props.children}
         </GlobalContext.Provider>

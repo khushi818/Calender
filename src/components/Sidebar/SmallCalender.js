@@ -21,14 +21,12 @@ const SmallCalender = () => {
   }//next button
 
   
-   const getCurrentDayClass = (day) =>{  
-        console.log('here' + '' +day.format('DD-MM-YY'))      
+   const getCurrentDayClass = (day) =>{     
         return (
         day.format('DD-MM-YY') === dayjs().format('DD-MM-YY') ? 'bg-blue-600 text-white rounded-full w-7':''
         )
     }//current date
-     const getDayClass = (day) =>{  
-        console.log('here' + '' +day.format('DD-MM-YY'))      
+     const getDayClass = (day) =>{        
         return (
         day.format('DD-MM-YY') === daySelected.format('DD-MM-YY') && day.format('DD-MM-YY') !== dayjs().format('DD-MM-YY') ? 'bg-pink-500 text-white rounded-full w-7':''
         )
