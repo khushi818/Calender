@@ -15,7 +15,7 @@ const Labels = () => {
       </p>
       <div>
             {labels.map((lbl,index) =>(
-        <React.Fragment key = {index} className ="flex flex-col">
+        <React.Fragment key = {index} >
         <label className ="mt-3 block"></label>
         <div className  = "ml-16 flex flex-cols justify-start items-center gap-1">
             <div className = "cursor-pointer text-white w-4 h-4"

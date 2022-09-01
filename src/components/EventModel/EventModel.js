@@ -8,9 +8,9 @@ const labelClasses = ['indigo','gray','green','blue','red','purple']
 
 const EventModel = () => {
   const {showEventModel,SavedEvents, setShowEventModel,daySelected,setDaySelected,selectedEvents} = useContext(GlobalContext)
-  const [title,setTitle] = useState('')
+  const [title,setTitle] = useState(selectedEvents ? selectedEvents.title :'')
   const [desc,setDesc] =useState(selectedEvents ? selectedEvents.desc : '')
-  const [selectedLabel,setSelectedLabel]= useState(selectedEvents ? labelClasses.find((lbl) => lbl === selectedEvents) : labelClasses[0])
+  const [selectedLabel,setSelectedLabel]= useState(selectedEvents ? (labelClasses.find((lbl) => lbl === selectedEvents.label) && selectedEvents.label) : labelClasses[0])
   const {dispatchCalEvents} = useContext(GlobalContext)
 
   const handleSubmit = (e) =>{
@@ -20,7 +20,7 @@ const EventModel = () => {
       desc : desc,
       label:selectedLabel,
       day:daySelected.valueOf(),
-      id: selectedEvents ? selectedEvents.id : Date.now()
+      id: selectedEvents ? selectedEvents.id : Date.now() 
   }   
    if(selectedEvents)
    {
@@ -47,19 +47,18 @@ const EventModel = () => {
              <button onClick={()=> 
               {
                 setShowEventModel(false) 
-                
              }}>X</button>
             </header>
             <div className="p-3">
               <div className="flex gap-y-2 flex-col">
                 <div></div>
-                
                <input type= "text"
                 name ="title" 
                 placeholder='Add title' 
-                value ={selectedEvents && (daySelected.valueOf() === selectedEvents.day) ? selectedEvents.title : title} 
+                value ={ title } 
                 className = "pt-3 pl-8 ml-4 border-0 text-grey-600 text-xl font-semibold pb-2 w-64 border-b-2 border-gray-200 focus:outline-none focus:ring-0 focus:border-blue-500"
-                onChange = {(e)=> setTitle(e.target.value)} />
+                onChange = {(e)=> setTitle(e.target.value)} 
+                />
                
                <span className='pl-8'><p>{daySelected ?daySelected.format("dddd ,MMMM DD"):dayjs().format("dddd, MMMM DD")}</p></span>
                 <div className='flex gap-2 text-xl'>
@@ -67,7 +66,7 @@ const EventModel = () => {
                 <input type= "text"
                 name ="title" 
                 placeholder='Add Desc' 
-                value ={selectedEvents && (daySelected.valueOf() === selectedEvents.day) ? selectedEvents.desc : ''} 
+                value ={desc} 
                 className = "pl-8 ml-4 border-0 text-grey-600 pb-2 w-64 border-b-2 border-gray-200 focus:outline-none focus:ring-0 focus:border-blue-500"
                 onChange = {(e)=> setDesc(e.target.value)} />
                </div>
