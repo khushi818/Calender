@@ -20,7 +20,7 @@ I am not good at working with days and time so Dayjs helped me a lot to grasp th
 
 # Demo
 
-[demo link](https://pokemon-landing-page-mocha.vercel.app/)
+[demo link](https://calender-eight.vercel.app/)
 
 [![calender.png](https://i.postimg.cc/BQDTp6HL/calender.png)](https://postimg.cc/SJSYNmZk)
 
