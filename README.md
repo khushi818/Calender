@@ -24,6 +24,8 @@ I am not good at working with days and time so Dayjs helped me a lot to grasp th
 
 [![calender.png](https://i.postimg.cc/BQDTp6HL/calender.png)](https://postimg.cc/SJSYNmZk)
 
+[![calender-model.png](https://i.postimg.cc/LXtSvj9Q/calender-model.png)](https://postimg.cc/cgLPLg8f)
+
 # Getting Started with Create React App
 
 This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
