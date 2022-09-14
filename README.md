@@ -1,6 +1,6 @@
 # Calender
 
-This is the calender you can use ti schedule your daily task or use as a normal calender
+This is the calender you can use it to schedule your daily task or use as a normal calender
 
 # Tools Used
 
