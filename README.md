@@ -1,3 +1,29 @@
+# Calender
+
+This is the calender you can use ti schedule your daily task or use as a normal calender
+
+# Tools Used
+
+Web - HTML , CSS , JavaScript
+
+Framework : React Js
+
+Package : DayJS
+
+# Learned
+
+It taught me how to work with react effectively . I learned about useContext in this project which I used in my portfolio as well. 
+
+# Challenges Faced
+
+I am not good at working with days and time so Dayjs helped me a lot to grasp this concept. I also struggled with models here but eventually sorted out. It was difficult to correct bugs at times but as I started to understand, it became much easier.
+
+# Demo
+
+[demo link](https://pokemon-landing-page-mocha.vercel.app/)
+
+[![calender.png](https://i.postimg.cc/BQDTp6HL/calender.png)](https://postimg.cc/SJSYNmZk)
+
 # Getting Started with Create React App
 
 This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
