@@ -4,7 +4,7 @@ This is the calender you can use it to schedule your daily task or use as a norm
 
 # Tools Used
 
-Web - HTML , CSS , JavaScript
+Web - HTML , Tailwind , JavaScript
 
 Framework : React Js
 
